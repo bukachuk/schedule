@@ -1,0 +1,67 @@
+{% extends "admin.html.twig" %}
+
+{% block title %}{{ 'routes.routes'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ 'routes.routes'|trans }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-12 show-grid timeline-title">
+                    <a class="btn btn-primary" href="{{ path('admin_add_routes') }}">{{ 'routes.add'|trans }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th width="50">ID</th>
+                                <th>{{ 'routes.date'|trans }}</th>
+                                <th>{{ 'routes.returnDate'|trans }}</th>
+                                <th>{{ 'routes.region'|trans }}</th>
+                                <th>{{ 'routes.name'|trans }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for routes in pagination %}
+                                <tr>
+                                    <td>{{ routes.id }}</td>
+                                    <td>{{ routes.date|date('d.m.Y') }}</td>
+                                    <td>{{ routes.returnDate|date('d.m.Y') }}</td>
+                                    <td>{{ routes.region.name }}</td>
+                                    <td>{{ routes.courier.name }}</td>
+                                    <td>
+                                        <a class="btn btn-default btn-xs" data-toggle="tooltip" title="{{ 'routes.edit'|trans }}" href="{{ url('admin_edit_routes',{'routes': routes.id}) }}">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                        <a class="btn btn-default btn-xs delete" data-toggle="tooltip" title="{{ 'routes.delete'|trans }}" href="{{ url('admin_delete_routes',{'routes': routes.id}) }}">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr><td colspan="5" align="center">{{ 'routes.not_found'|trans }}</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="navigation text-right">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

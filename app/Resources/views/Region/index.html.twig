@@ -1,0 +1,56 @@
+{% extends "admin.html.twig" %}
+
+{% block title %}{{ 'region.region'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ 'region.region'|trans }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-12 show-grid timeline-title">
+                    <a class="btn btn-primary" href="{{ path('admin_add_region') }}">{{ 'region.add'|trans }}</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th width="50">ID</th>
+                                <th>{{ knp_pagination_sortable(pagination, 'region.name'|trans, 'c.name') }}</th>
+                                <th>{{ knp_pagination_sortable(pagination, 'region.delivery'|trans, 'c.delivery') }}</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for region in pagination %}
+                                <tr>
+                                    <td>{{ region.id }}</td>
+                                    <td>{{ region.name }}</td>
+                                    <td>{{ region.delivery }}</td>
+                                    <td>
+                                        <a class="btn btn-default btn-xs" data-toggle="tooltip" title="{{ 'region.edit'|trans }}" href="{{ url('admin_edit_region',{'id': region.id}) }}">
+                                            <span class="glyphicon glyphicon-pencil"></span>
+                                        </a>
+                                        <a class="btn btn-default btn-xs delete" data-toggle="tooltip" title="{{ 'region.delete'|trans }}" href="{{ url('admin_delete_region',{'id': region.id}) }}">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr><td colspan="3" align="center">{{ 'region.not_found'|trans }}</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="navigation text-right">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

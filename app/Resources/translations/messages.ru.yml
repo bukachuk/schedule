@@ -1,0 +1,32 @@
+routes:
+  routes: Расписание поездок
+  add: Добавить поездку
+  name: Ф.И.О.
+  not_found: Поездки не найдены
+  date: Дата отправления
+  courier: Курьер
+  region: Регион отправления
+  submit: Сохранить
+  delete: Удалить
+  edit: Редактирование
+  dateFrom: Дата от
+  dateTo: Дата до
+  search: Найти
+  returnDate: Дата прибытия
+
+courier:
+  courier: Курьеры
+  name: Ф.И.О.
+  add: Добавить курьера
+  edit: Редактирование
+  not_found: Курьеры не найдены
+  delete: Удалить
+
+region:
+  region: Регионы
+  name: Название
+  add: Добавить регион
+  edit: Редактирование
+  not_found: Регионы не найдены
+  delivery: Длительность поездки (туда/обратно)
+  delete: Удалить
