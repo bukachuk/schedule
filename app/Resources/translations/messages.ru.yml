@@ -5,7 +5,7 @@ routes:
   not_found: Поездки не найдены
   date: Дата отправления
   courier: Курьер
-  region: Регион отправления
+  region: Регион доставки
   submit: Сохранить
   delete: Удалить
   edit: Редактирование
@@ -13,6 +13,7 @@ routes:
   dateTo: Дата до
   search: Найти
   returnDate: Дата прибытия
+  placeholder: Начните вводить название региона
 
 courier:
   courier: Курьеры

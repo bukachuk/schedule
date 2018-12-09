@@ -44,7 +44,7 @@ class RoutesType extends AbstractType
             ))
             ->add('region', TextType::class, array(
                 'label' => 'routes.region',
-                'attr' => ['class' => 'autocomplete'],
+                'attr' => ['class' => 'autocomplete', 'placeholder' => 'routes.placeholder'],
             ))
             ->add('returnDate', TextType::class, array(
                 'label' => 'routes.returnDate',

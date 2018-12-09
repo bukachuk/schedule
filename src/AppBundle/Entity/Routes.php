@@ -47,7 +47,7 @@ class Routes
     private $courier;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(message="region.blank")
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Region",cascade={"persist"})
      * @ORM\JoinColumn(name="region_id", referencedColumnName="id", nullable=true)
      * */

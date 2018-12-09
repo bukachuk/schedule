@@ -54,14 +54,21 @@
             $('.datepicker').change(function(){
                 if(days){
                     $(".returnDate").val(moment($(".datepicker").val(), 'DD.MM.YYYY').add(days, 'days').format('DD.MM.YYYY'));
+                } else if($('.autocomplete').val()){
+                    $.get("/admin/region/search", {term: $('.autocomplete').val()}, function(json){
+                        if(json && json.length == 1){
+                            days = (json[0]['delivery']);
+                            $(".returnDate").val(moment($(".datepicker").val(), 'DD.MM.YYYY').add(days, 'days').format('DD.MM.YYYY'));
+                        }
+                    }, 'json');
                 }
             });
             $('.autocomplete').autocomplete({
                 source: "/admin/region/search",
                 minLength: 1,
                 select: function( event, ui ) {
+                    days = ui.item.delivery;
                     if($(".datepicker").val()){
-                        days = ui.item.delivery;
                         $(".returnDate").val(moment($(".datepicker").val(), 'DD.MM.YYYY').add(days, 'days').format('DD.MM.YYYY'));
                     }
                 }
